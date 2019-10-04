@@ -7,6 +7,7 @@ import {
   Button
  } from 'reactstrap';
  import { Link } from "react-router-dom";
+ import "./style.css";
 
 
 export default class Example extends React.Component {
