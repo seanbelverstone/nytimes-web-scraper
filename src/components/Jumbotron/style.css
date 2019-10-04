@@ -1,0 +1,7 @@
+.jumbotron {
+    background-image: url("../../images/bbcnews.jpg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-color: rgb(245,245,245) !important;
+}
