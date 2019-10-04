@@ -10,7 +10,7 @@ import {
  import "./style.css";
 
 
-export default class Example extends React.Component {
+export default class mainNav extends React.Component {
 
   render() {
     return (
@@ -25,7 +25,7 @@ export default class Example extends React.Component {
                 <Link to="/savedArticles">Saved Articles</Link>
               </NavItem>
               <NavItem>
-                <Button color="danger">Scrape New Articles</Button>
+                <Button color="danger" href="/scrape">Scrape New Articles</Button>
               </NavItem>
             </Nav>
         </Navbar>
