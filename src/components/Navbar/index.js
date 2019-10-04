@@ -3,9 +3,11 @@ import {
   Navbar,
   NavbarBrand,
   Nav,
-  NavItem
+  NavItem,
+  Button
  } from 'reactstrap';
  import { Link } from "react-router-dom";
+ import "./style.css";
 
 
 export default class Example extends React.Component {
@@ -21,6 +23,9 @@ export default class Example extends React.Component {
               </NavItem>
               <NavItem>
                 <Link to="/savedArticles">Saved Articles</Link>
+              </NavItem>
+              <NavItem>
+                <Button color="danger">Scrape New Articles</Button>
               </NavItem>
             </Nav>
         </Navbar>
