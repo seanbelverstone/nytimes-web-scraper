@@ -1,23 +1,10 @@
 import React, {Component} from 'react';
 import {
-  Card, CardImg, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle
+  Card, CardText, CardBody, CardLink,
+  CardTitle
 } from 'reactstrap';
 
 export default class NewsCard extends Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        title: "",
-        img: "",
-        caption: "",
-        link: ""
-      }
-  }
-
-
-
-
 
   render() {
     return (
@@ -25,12 +12,11 @@ export default class NewsCard extends Component {
         <Card>
           <CardBody>
             <CardTitle>{this.props.title}</CardTitle>
-            <CardSubtitle>Card subtitle</CardSubtitle>
           </CardBody>
-          <img width="100%" src="/" alt="Card image cap" />
+          <img width="100%" src={this.props.img} alt="Latest articles" />
           <CardBody>
-            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-            <CardLink href="#">Card Link</CardLink>
+            <CardText>{this.props.caption}</CardText>
+            <CardLink href={this.props.link}>Card Link</CardLink>
           </CardBody>
         </Card>
       </div>

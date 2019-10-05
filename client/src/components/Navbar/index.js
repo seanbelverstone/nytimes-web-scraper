@@ -26,7 +26,7 @@ export default class mainNav extends React.Component {
                 <Link to="/savedArticles">Saved Articles</Link>
               </NavItem>
               <NavItem>
-                <Button color="secondary" onClick={this.props.scrapeNews}>Scrape New Articles</Button>
+                <Button color="secondary" onClick={() => this.props.scrapeNews()}>Scrape New Articles</Button>
               </NavItem>
             </Nav>
         </Navbar>

@@ -1,7 +1,7 @@
 {
   "name": "web-scraper",
   "version": "1.0.0",
-  "description": "BBC Web Scraping Website",
+  "description": "NY Times Web Scraping Website",
   "engines": {
     "node": "v11.13.0"
   },
@@ -36,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seanbelverstone/bbc-web-scraper.git"
+    "url": "git+https://github.com/seanbelverstone/nytimes-web-scraper.git"
   },
   "bugs": {
-    "url": "https://github.com/seanbelverstone/bbc-web-scraper/issues"
+    "url": "https://github.com/seanbelverstone/nytimes-web-scraper/issues"
   },
-  "homepage": "https://github.com/seanbelverstone/bbc-web-scraper#readme"
+  "homepage": "https://github.com/seanbelverstone/nytimes-web-scraper#readme"
 }
