@@ -8,7 +8,7 @@ const BBCJumbo = (props) => {
       <Jumbotron fluid>
         <Container fluid>
           <h1 className="display-3">Mongo Scraper</h1>
-          <p className="lead">BBC Edition.</p>
+          <p className="lead">NY Times World Edition.</p>
         </Container>
       </Jumbotron>
     </div>
