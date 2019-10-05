@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
 import BBCJumbo from "./components/Jumbotron";
+import CardContainer from "./components/CardContainer";
+import NewsCard from "./components/NewsCard";
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
           {/* <Route exact path="/savedArticles" component={SavedArticles} /> */}
         </Wrapper>
       </div>
+      <CardContainer>
+        <NewsCard />
+      </CardContainer>
     </Router>
   );
 }

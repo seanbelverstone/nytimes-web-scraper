@@ -51,6 +51,7 @@ app.get("/scrape", function(req, res) {
       var title = $(element).find("h2").find("a").text();
       var img = $(element).find("a").find("img").attr("src");
       var caption = $(element).find("p").text();
+      var link = $(element).find("h2").find("a").attr("src");
 
       // If this found element had both a title and a link
       if (title && img) {
@@ -58,7 +59,8 @@ app.get("/scrape", function(req, res) {
         db.scrapedArticles.insert({
           title: title,
           img: img,
-          caption: caption
+          caption: caption,
+          link: link
         },
         function(err, inserted) {
           if (err) {
