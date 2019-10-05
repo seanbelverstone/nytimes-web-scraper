@@ -2,7 +2,7 @@ import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
 import "./style.css";
 
-const BBCJumbo = (props) => {
+const MainJumbotron = (props) => {
   return (
     <div>
       <Jumbotron fluid>
@@ -15,4 +15,4 @@ const BBCJumbo = (props) => {
   );
 };
 
-export default BBCJumbo;
+export default MainJumbotron;

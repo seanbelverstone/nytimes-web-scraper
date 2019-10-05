@@ -74,10 +74,8 @@ app.get("/scrape", function(req, res) {
         });
       }
     });
+    res.send(response);
   });
-
-  // Send a "Scrape Complete" message to the browser
-  res.send("Scrape Complete");
 });
 
 

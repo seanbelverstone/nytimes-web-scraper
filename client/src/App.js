@@ -3,17 +3,27 @@ import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
-import BBCJumbo from "./components/Jumbotron";
+import MainJumbotron from "./components/Jumbotron";
 import CardContainer from "./components/CardContainer";
 import NewsCard from "./components/NewsCard";
+import API from "./actions/routes";
+
 
 function App() {
+
+  scrapeNews = () => {
+    API.scrapeNews().then(function(response) {
+        console.log(response);
+    });
+  }
+
+
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar scrapeNews={this.scrapeNews}/>
         <Wrapper>
-          <Route exact path="/" component={BBCJumbo}/>
+          <Route exact path="/" component={MainJumbotron}/>
           {/* <Route exact path="/savedArticles" component={SavedArticles} /> */}
         </Wrapper>
       </div>
