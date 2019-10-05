@@ -1,4 +1,3 @@
-
 var express = require("express");
 var mongojs = require("mongojs");
 var axios = require("axios");
@@ -42,6 +41,8 @@ app.get("/scrape", (request, response) => {
   axios.get("http://www.bbc.com/").then(result => {
 
   var $ = cheerio.load(result.data);
+  console.log("working");
+
 
   $("media-list__item media-list__item--1").each((i, element) => {
 
