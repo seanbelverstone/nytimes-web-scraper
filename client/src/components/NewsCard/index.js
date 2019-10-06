@@ -3,6 +3,7 @@ import {
   Card, CardText, CardBody, CardLink,
   CardTitle
 } from 'reactstrap';
+import "./style.css";
 
 export default class NewsCard extends Component {
 
@@ -16,7 +17,7 @@ export default class NewsCard extends Component {
           <img width="100%" src={this.props.img} alt="Latest articles" />
           <CardBody>
             <CardText>{this.props.caption}</CardText>
-            <CardLink href={this.props.link}>Card Link</CardLink>
+            <CardLink href={"http://www.nytimes.com/" + this.props.link}>Click here to read the full story</CardLink>
           </CardBody>
         </Card>
       </div>
