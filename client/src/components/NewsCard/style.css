@@ -1,6 +1,6 @@
 .card {
     width: 25%;
-    height: 650px;
+    height: 700px;
     float: left;
     margin: 30px;
     box-shadow: 10px 10px 5px gray;
@@ -9,4 +9,13 @@
 .card-title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 28px;
+}
+
+.icon {
+    float: right;
+}
+
+.icon:hover {
+    transform: scale(3);
+    transition: 200ms;
 }

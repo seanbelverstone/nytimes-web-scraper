@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Card, CardText, CardBody, CardLink,
   CardTitle
 } from 'reactstrap';
+import { FaBookmark } from "react-icons/fa";
 import "./style.css";
 
 export default class NewsCard extends Component {
@@ -13,6 +14,7 @@ export default class NewsCard extends Component {
         <Card>
           <CardBody>
             <CardTitle>{this.props.title}</CardTitle>
+            <FaBookmark className="icon" onClick={this.props.addToFavorites}/>
           </CardBody>
           <img width="100%" src={this.props.img} alt="Latest articles" />
           <CardBody>

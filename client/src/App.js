@@ -12,20 +12,8 @@ import API from "./actions/routes";
 class App extends React.Component {
 
   state = {
-    articles: []
-
-  }
-
-  componentWillMount() {
-    this.flushArticles();
-  }
-
-  flushArticles = () => {
-    API.flushArticles().then(() => {
-      this.setState({
-        articles: ""
-      })
-    })
+    articles: [],
+    favorites: []
   }
 
   componentDidMount() {
@@ -48,6 +36,15 @@ class App extends React.Component {
     }
   )}
 
+  addToFavorites = (event) => {
+    console.log("Added to favorites!");
+    this.setState({
+      favorites: event.target
+    })
+      console.log(this.state.favorites)
+    }
+    // trying to add the clicked article to a favorites array in state
+
 render() {
   return (
     <Router>
@@ -61,12 +58,15 @@ render() {
       <CardContainer>
         {this.state.articles.map(data => (
           <NewsCard 
+          addToFavorites = {this.addToFavorites}
+          key = {data._id}
           title = {data.title}
           img = {data.img}
           caption = {data.caption}
           link = {data.link}
           />
         )) }
+
         {/*map data and create newscard*/}
       </CardContainer>
     </Router>
