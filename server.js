@@ -24,6 +24,10 @@ app.get("/", function(req, res) {
   res.send("Hello world");
 });
 
+app.get("/flush", function(req, res) {
+  db.scrapedArticles.remove({});
+});
+
 // Retrieve data from the db
 app.get("/all", function(req, res) {
   // Find all results from the scrapedArticles collection in the db

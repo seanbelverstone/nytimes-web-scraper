@@ -16,6 +16,18 @@ class App extends React.Component {
 
   }
 
+  componentWillMount() {
+    this.flushArticles();
+  }
+
+  flushArticles = () => {
+    API.flushArticles().then(() => {
+      this.setState({
+        articles: ""
+      })
+    })
+  }
+
   componentDidMount() {
     this.showData();
   }
@@ -30,7 +42,6 @@ class App extends React.Component {
   // Here you need to grab the data from Mongo
   showData = () => {
     API.showData().then(response => {
-      console.log(response.data)
       this.setState({
         articles: response.data
       })
