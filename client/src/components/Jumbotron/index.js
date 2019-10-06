@@ -2,17 +2,17 @@ import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
 import "./style.css";
 
-const BBCJumbo = (props) => {
+const MainJumbotron = (props) => {
   return (
     <div>
       <Jumbotron fluid>
         <Container fluid>
           <h1 className="display-3">Mongo Scraper</h1>
-          <p className="lead">BBC Edition.</p>
+          <p className="lead">NY Times World Edition.</p>
         </Container>
       </Jumbotron>
     </div>
   );
 };
 
-export default BBCJumbo;
+export default MainJumbotron;

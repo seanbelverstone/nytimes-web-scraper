@@ -3,20 +3,75 @@ import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
-import BBCJumbo from "./components/Jumbotron";
+import MainJumbotron from "./components/Jumbotron";
+import CardContainer from "./components/CardContainer";
+import NewsCard from "./components/NewsCard";
+import API from "./actions/routes";
 
-function App() {
+
+class App extends React.Component {
+
+  state = {
+    articles: [],
+    favorites: []
+  }
+
+  componentDidMount() {
+    this.showData();
+  }
+
+  scrapeNews = () => {
+    API.scrapeNews().then(function(response) {
+      return (response);
+
+    });
+  }
+
+  // Here you need to grab the data from Mongo
+  showData = () => {
+    API.showData().then(response => {
+      this.setState({
+        articles: response.data
+      })
+    }
+  )}
+
+  addToFavorites = (event) => {
+    console.log("Added to favorites!");
+    this.setState({
+      favorites: event.target
+    })
+      console.log(this.state.favorites)
+    }
+    // trying to add the clicked article to a favorites array in state
+
+render() {
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar scrapeNews={this.scrapeNews}/>
         <Wrapper>
-          <Route exact path="/" component={BBCJumbo}/>
+          <Route exact path="/" component={MainJumbotron} />
           {/* <Route exact path="/savedArticles" component={SavedArticles} /> */}
         </Wrapper>
       </div>
+      <CardContainer>
+        {this.state.articles.map(data => (
+          <NewsCard 
+          addToFavorites = {this.addToFavorites}
+          key = {data._id}
+          title = {data.title}
+          img = {data.img}
+          caption = {data.caption}
+          link = {data.link}
+          />
+        )) }
+
+        {/*map data and create newscard*/}
+      </CardContainer>
     </Router>
   );
+  }
 }
 
 export default App;

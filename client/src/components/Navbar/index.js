@@ -12,11 +12,12 @@ import {
 
 export default class mainNav extends React.Component {
 
+
   render() {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">BBC Mongo Web Scraper</NavbarBrand>
+          <NavbarBrand href="/">World News Mongo Web Scraper</NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <Link to="/">Home</Link>
@@ -25,7 +26,7 @@ export default class mainNav extends React.Component {
                 <Link to="/savedArticles">Saved Articles</Link>
               </NavItem>
               <NavItem>
-                <Button color="danger" href="/scrape">Scrape New Articles</Button>
+                <Button color="secondary" onClick={() => this.props.scrapeNews()}>Scrape New Articles</Button>
               </NavItem>
             </Nav>
         </Navbar>

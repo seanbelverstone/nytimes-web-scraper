@@ -1,13 +1,16 @@
+// Dependencies
 var express = require("express");
 var mongojs = require("mongojs");
+// Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
 var cheerio = require("cheerio");
+const PORT = process.env.PORT || 3001
 
 // Initialize Express
 var app = express();
 
 // Database configuration
-var databaseUrl = "bbc_scrape";
+var databaseUrl = "nytimes_scrape";
 var collections = ["scrapedArticles"];
 
 // Hook mongojs configuration to the db variable
@@ -18,54 +21,65 @@ db.on("error", function(error) {
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
-  res.send("No articles to show");
+  res.send("Hello world");
 });
 
-// This grabs all the data from the scrapedArticles collection as a JSON.
-app.get("/data", (request, response) => {
-  db.scrapedArticles.find({}, (err, result) => {
-    response.json(result);
+// Retrieve data from the db
+app.get("/all", function(req, res) {
+  // Find all results from the scrapedArticles collection in the db
+  db.scrapedArticles.find({}, function(error, found) {
+    // Throw any errors to the console
+    if (error) {
+      console.log(error);
+    }
+    // If there are no errors, send the data to the browser as json
+    else {
+      res.json(found);
+    }
   });
 });
 
-// Route 2
-// =======
-// When you visit this route, the server will
-// scrape data from the site of your choice, and save it to
-// MongoDB.
-// TIP: Think back to how you pushed website data
-// into an empty array in the last class. How do you
-// push it into a MongoDB collection instead?
+// Scrape data from one site and place it into the mongodb db
+app.get("/scrape", function(req, res) {
+  // Make a request via axios for the news section of `ycombinator`
+  axios.get("https://www.nytimes.com/section/world").then(function(response) {
+    // Load the html body from axios into cheerio
+    var $ = cheerio.load(response.data);
+    // For each element with a "title" class
+    $("article").each(function(i, element) {
+      // Save the text and href of each link enclosed in the current element
+      var title = $(element).find("h2").find("a").text();
+      var img = $(element).find("a").find("img").attr("src");
+      var caption = $(element).find("p").text();
+      var link = $(element).find("a").attr("href");
 
-app.get("/scrape", (request, response) => {
-  axios.get("http://www.bbc.com/").then(result => {
-
-  var $ = cheerio.load(result.data);
-  console.log("working");
-
-
-  $("media-list__item media-list__item--1").each((i, element) => {
-
-    var title = $(element).find("h3").text();
-    var caption = $(element).find(".media__summary").text();
-    var img = $(element).find("img").attr("src");
-
-    // Save these results in an object that we'll push into the results array we defined earlier
-    db.scrapedArticles.insert({
-      title: title,
-      caption: caption,
-      img: img
-      });
-      console.log(title, caption, img);
-
+      // If this found element had both a title and a link
+      if (title && img) {
+        // Insert the data in the scrapedArticles db
+        db.scrapedArticles.insert({
+          title: title,
+          img: img,
+          caption: caption,
+          link: link
+        },
+        function(err, inserted) {
+          if (err) {
+            // Log the error if one is encountered during the query
+            console.log(err);
+          }
+          else {
+            // Otherwise, log the inserted data
+            console.log(inserted);
+          }
+        });
+      }
     });
+    res.send(response);
   });
-  response.end();
 });
 
-/* -/-/-/-/-/-/-/-/-/-/-/-/- */
 
-// Listen on port 3000
-app.listen(3000, function() {
-  console.log("App running on port 3000!");
+// Listen on port 3001
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT);
 });

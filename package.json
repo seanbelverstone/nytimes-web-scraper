@@ -1,7 +1,7 @@
 {
   "name": "web-scraper",
   "version": "1.0.0",
-  "description": "BBC Web Scraping Website",
+  "description": "NY Times Web Scraping Website",
   "engines": {
     "node": "v11.13.0"
   },
@@ -23,21 +23,24 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
+    "mongojs": "^2.6.0",
     "mongoose": "^5.7.3",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-icons": "^3.7.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "reactstrap": "^8.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seanbelverstone/bbc-web-scraper.git"
+    "url": "git+https://github.com/seanbelverstone/nytimes-web-scraper.git"
   },
   "bugs": {
-    "url": "https://github.com/seanbelverstone/bbc-web-scraper/issues"
+    "url": "https://github.com/seanbelverstone/nytimes-web-scraper/issues"
   },
-  "homepage": "https://github.com/seanbelverstone/bbc-web-scraper#readme"
+  "homepage": "https://github.com/seanbelverstone/nytimes-web-scraper#readme"
 }
