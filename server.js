@@ -39,19 +39,24 @@ app.get("/all", function(req, res) {
   });
 });
 
-app.post("/save", function(req, res) {
+app.get("/save", function(req, res) {
   console.log(req.body);
 
-  db.savedArticles.insert(req.body, function(error, saved) {
+  // db.savedArticles.insert({
+  //   title: req.body.title,
+  //   img: req.body.img,
+  //   caption: req.body.caption,
+  //   link: req.body.link 
+  //   }, function(error, saved) {
 
-    if (error) {
-      console.log(error);
-    }
-    else {
-      res.json(saved)
-    }
-  });
-})
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  //   else {
+  //     res.json(saved)
+  //   }
+  // });
+});
 
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
