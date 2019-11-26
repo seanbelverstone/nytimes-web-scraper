@@ -13,7 +13,6 @@ class App extends React.Component {
 
   state = {
     articles: [],
-    favorites: []
   }
 
   componentDidMount() {
@@ -37,13 +36,14 @@ class App extends React.Component {
   )}
 
   addToFavorites = (event) => {
-    console.log("Added to favorites!");
-    this.setState({
-      favorites: event.target
+    API.savePost()
+    .then(response => {
+      console.log(results);
     })
-      console.log(this.state.favorites)
-    }
-    // trying to add the clicked article to a favorites array in state
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
 render() {
   return (
@@ -58,12 +58,12 @@ render() {
       <CardContainer>
         {this.state.articles.map(data => (
           <NewsCard 
-          addToFavorites = {this.addToFavorites}
-          key = {data._id}
-          title = {data.title}
-          img = {data.img}
-          caption = {data.caption}
-          link = {data.link}
+            addToFavorites={this.addToFavorites}
+            key={data._id}
+            title={data.title}
+            img={data.img}
+            caption={data.caption}
+            link={data.link}
           />
         )) }
 

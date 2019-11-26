@@ -9,6 +9,10 @@ module.exports = {
 
     scrapeNews: function(req, res) {
         return axios.get("/scrape")
+    },
+
+    savePost: function(req, res) {
+        return axios.post("/save")
     }
 
 
