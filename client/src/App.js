@@ -36,9 +36,9 @@ class App extends React.Component {
   )}
 
   addToFavorites = (event) => {
-    API.savePost()
+    API.savePost(this.props.title)
     .then(response => {
-      console.log(results);
+      console.log(response);
     })
     .catch(err => {
       console.log(err);

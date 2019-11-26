@@ -11,7 +11,7 @@ var app = express();
 
 // Database configuration
 var databaseUrl = "nytimes_scrape";
-var collections = ["scrapedArticles"];
+var collections = ["scrapedArticles", "savedArticles"];
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
@@ -38,6 +38,20 @@ app.get("/all", function(req, res) {
     }
   });
 });
+
+app.post("/save", function(req, res) {
+  console.log(req.body);
+
+  db.savedArticles.insert(req.body, function(error, saved) {
+
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(saved)
+    }
+  });
+})
 
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
@@ -77,7 +91,6 @@ app.get("/scrape", function(req, res) {
     res.send(response);
   });
 });
-
 
 // Listen on port 3001
 app.listen(PORT, function() {

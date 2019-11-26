@@ -11,8 +11,13 @@ module.exports = {
         return axios.get("/scrape")
     },
 
-    savePost: function(req, res) {
-        return axios.post("/save")
+    savePost: function(title, img, caption, link) {
+        return axios.post("/save", {
+            title,
+            img,
+            caption,
+            link           
+        })
     }
 
 
