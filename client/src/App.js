@@ -35,15 +35,16 @@ class App extends React.Component {
     }
   )}
 
-  addToFavorites = (event) => {
-    API.savePost(this.props.title)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  // addToFavorites = (event) => {
+  //   console.log(this.props)
+  //   // API.savePost()
+  //   // .then(response => {
+  //   //   console.log(response);
+  //   // })
+  //   // .catch(err => {
+  //   //   console.log(err);
+  //   // })
+  // }
 
 render() {
   return (

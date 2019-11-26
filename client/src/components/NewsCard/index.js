@@ -6,6 +6,10 @@ import {
 import { FaBookmark } from "react-icons/fa";
 import "./style.css";
 
+function addToFavorites() {
+  console.log("test")
+}
+
 export default class NewsCard extends Component {
 
   render() {
@@ -14,7 +18,7 @@ export default class NewsCard extends Component {
         <Card>
           <CardBody>
             <CardTitle>{this.props.title}</CardTitle>
-            <FaBookmark className="icon" onClick={this.props.addToFavorites}/>
+            <FaBookmark className="icon" onClick={() => addToFavorites()}/>
           </CardBody>
           <img width="100%" src={this.props.img} alt="Latest articles" />
           <CardBody>
