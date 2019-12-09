@@ -39,7 +39,7 @@ app.get("/all", function(req, res) {
   });
 });
 
-app.get("/save", function(req, res) {
+app.post("/save", function(req, res) {
   console.log(req.body);
 
   // db.savedArticles.insert({

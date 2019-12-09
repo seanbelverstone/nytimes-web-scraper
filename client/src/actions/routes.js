@@ -12,7 +12,7 @@ module.exports = {
     },
 
     savePost: function(title, img, caption, link) {
-        return axios.get("/save", {
+        return axios.post("/save", {
             title,
             img,
             caption,

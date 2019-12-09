@@ -15,15 +15,19 @@ class App extends React.Component {
     articles: [],
   }
 
-  componentDidMount() {
-    this.showData();
+  componentWillMount() {
+      this.setState({
+        articles: []
+      })
   }
 
   scrapeNews = () => {
     API.scrapeNews().then(function(response) {
       return (response);
 
-    });
+    }).then(
+      this.showData()
+    );
   }
 
   // Here you need to grab the data from Mongo
