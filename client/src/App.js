@@ -15,10 +15,8 @@ class App extends React.Component {
     articles: [],
   }
 
-  componentWillMount() {
-      this.setState({
-        articles: []
-      })
+  componentDidMount() {
+      this.showData();
   }
 
   scrapeNews = () => {
