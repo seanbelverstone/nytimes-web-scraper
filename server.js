@@ -39,25 +39,6 @@ app.get("/all", function(req, res) {
   });
 });
 
-app.get("/save", function(req, res) {
-  console.log(req.body);
-
-  // db.savedArticles.insert({
-  //   title: req.body.title,
-  //   img: req.body.img,
-  //   caption: req.body.caption,
-  //   link: req.body.link 
-  //   }, function(error, saved) {
-
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  //   else {
-  //     res.json(saved)
-  //   }
-  // });
-});
-
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
   // Make a request via axios for the news section of `ycombinator`
@@ -88,12 +69,31 @@ app.get("/scrape", function(req, res) {
           }
           else {
             // Otherwise, log the inserted data
-            console.log(inserted);
+            console.log("Scraped!");
           }
         });
       }
     });
     res.send(response);
+  });
+});
+
+app.post("/save", function(req, res) {
+  console.log(req.body);
+
+  db.savedArticles.insert({
+    title: req.body.title,
+    img: req.body.img,
+    caption: req.body.caption,
+    link: req.body.link 
+    }, function(error, saved) {
+
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(saved)
+    }
   });
 });
 
