@@ -22,5 +22,4 @@ If you wish to install this application yourself, please follow the instructions
 1. Clone this repository to your local machine using https://github.com/seanbelverstone/nytimes-web-scraper.git
 2. Install all necessary packages by typing `$ npm i` into your command line.
 
-
 You can visit a live version of this application [here](https://nytimes-web-scraper.herokuapp.com/).
